@@ -1,0 +1,12 @@
+table dim_departamento
+	lineageTag: be81293a-d846-4556-a3f6-9a534ab774d0
+
+	column departamento
+		dataType: string
+		lineageTag: d7ea42c3-4040-4510-b633-88b395d66259
+		sourceColumn: departamento
+
+	partition dim_departamento = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT DISTINCT departamento AS departamento FROM marts.contratacion ORDER BY departamento"]) in Source
+

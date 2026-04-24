@@ -1,0 +1,32 @@
+table resumen_departamento
+	lineageTag: 5b08b21e-c1db-4c1c-be0d-ea089a31c18b
+
+	column depto
+		dataType: string
+		lineageTag: 0c20d601-d25d-4bf9-926c-e18a284a6c6c
+		sourceColumn: depto
+
+	column num_contratos
+		dataType: int64
+		lineageTag: de2f216d-a8af-49e9-897a-555653a5ad6b
+		sourceColumn: num_contratos
+
+	column valor_total
+		dataType: decimal
+		lineageTag: be84f1c8-39f3-4202-b5f0-e46beb6c38cb
+		sourceColumn: valor_total
+
+	column valor_promedio
+		dataType: decimal
+		lineageTag: 58be9a02-1313-44af-8d09-6e68689fb593
+		sourceColumn: valor_promedio
+
+	column num_entidades
+		dataType: int64
+		lineageTag: 7f1389cc-e31a-4518-af72-e3b92c2f8f43
+		sourceColumn: num_entidades
+
+	partition resumen_departamento = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT depto, num_contratos, valor_total, valor_promedio, num_entidades FROM marts.resumen_departamento"]) in Source
+

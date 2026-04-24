@@ -1,0 +1,92 @@
+table contratacion
+	lineageTag: b0ef92fe-6cb7-4932-b1fd-ab94ed22020a
+
+	column id_contrato
+		dataType: string
+		lineageTag: e76bbf7f-a02c-45a8-9dab-ea6fdb4f0992
+		sourceColumn: id_contrato
+
+	column referencia
+		dataType: string
+		lineageTag: 55556ab1-0b51-49e5-b232-ff030a3af542
+		sourceColumn: referencia
+
+	column nombre_entidad
+		dataType: string
+		lineageTag: fe46bbc4-dd5e-4358-ae82-88e15f87d054
+		sourceColumn: nombre_entidad
+
+	column nit_entidad
+		dataType: int64
+		lineageTag: 65ee7fa3-949b-4247-98fe-4618c35e6db3
+		sourceColumn: nit_entidad
+
+	column departamento
+		dataType: string
+		lineageTag: 03e8e0cc-2d32-40e5-9fd7-a78b39dc9ff9
+		sourceColumn: departamento
+
+	column ciudad
+		dataType: string
+		lineageTag: f83d16ea-0984-4aa7-b899-35112daea118
+		sourceColumn: ciudad
+
+	column proceso_de_compra
+		dataType: string
+		lineageTag: c9fb73c4-c468-49c8-973f-e2e63740ab27
+		sourceColumn: proceso_de_compra
+
+	column tipo_contrato
+		dataType: string
+		lineageTag: 978e1f5d-96cb-4919-9072-d5efde037fb5
+		sourceColumn: tipo_contrato
+
+	column modalidad
+		dataType: string
+		lineageTag: 30eb2b45-d1d4-4358-93ba-3c948e4bf4ad
+		sourceColumn: modalidad
+
+	column estado_contrato
+		dataType: string
+		lineageTag: 7f68b5e9-b9fe-4bd6-b786-7d80fbac52d5
+		sourceColumn: estado_contrato
+
+	column fecha_firma
+		dataType: dateTime
+		lineageTag: 61895782-c219-4612-9179-49689418b0d3
+		sourceColumn: fecha_firma
+
+	column fecha_inicio
+		dataType: dateTime
+		lineageTag: 0f8111a8-91bd-4558-9248-e2318a2f3978
+		sourceColumn: fecha_inicio
+
+	column valor_contrato
+		dataType: decimal
+		lineageTag: d6132472-49e8-4d40-ad48-1346385a99af
+		sourceColumn: valor_contrato
+
+	column valor_pagado
+		dataType: decimal
+		lineageTag: 3ecde937-ae6f-48ce-af03-0506c5a9fefa
+		sourceColumn: valor_pagado
+
+	column proveedor
+		dataType: string
+		lineageTag: 6551170c-e4d8-471b-a803-4279b03758de
+		sourceColumn: proveedor
+
+	column sector
+		dataType: string
+		lineageTag: 8f894307-2bde-43d1-8892-8b833c55ea67
+		sourceColumn: sector
+
+	column fecha_carga
+		dataType: dateTime
+		lineageTag: 9fc0b679-53c1-43ec-a483-fbd15756e529
+		sourceColumn: fecha_carga
+
+	partition contratacion = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT id_contrato, referencia, nombre_entidad, nit_entidad, departamento, ciudad, proceso_de_compra, tipo_contrato, modalidad, estado_contrato, fecha_firma, fecha_inicio, valor_contrato, valor_pagado, proveedor, sector, fecha_carga FROM marts.contratacion"]) in Source
+

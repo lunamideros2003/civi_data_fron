@@ -1,0 +1,12 @@
+table dim_proceso
+	lineageTag: 8a5afc57-3fe5-445f-a489-09523f33b431
+
+	column proceso
+		dataType: string
+		lineageTag: 65e8cabb-77f2-4477-b551-facfbdeeb998
+		sourceColumn: proceso
+
+	partition dim_proceso = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT DISTINCT proceso_de_compra AS proceso FROM marts.contratacion ORDER BY proceso_de_compra"]) in Source
+

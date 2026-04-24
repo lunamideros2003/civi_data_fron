@@ -1,0 +1,27 @@
+table resumen_entidad
+	lineageTag: 7d758c45-cc98-4d32-850e-0e098231d7c6
+
+	column nombre_entidad
+		dataType: string
+		lineageTag: ae8c5bb6-0ebf-4e16-bf54-ec0cbc0ef1c2
+		sourceColumn: nombre_entidad
+
+	column depto
+		dataType: string
+		lineageTag: b37e863b-f1e3-4834-b79f-2bb3b075e0ef
+		sourceColumn: depto
+
+	column num_contratos
+		dataType: int64
+		lineageTag: e05b2f4e-9407-430b-bb9e-515b2ea6128b
+		sourceColumn: num_contratos
+
+	column valor_total
+		dataType: decimal
+		lineageTag: 49285070-3f5a-4de7-9c2a-06c8ab9d30d0
+		sourceColumn: valor_total
+
+	partition resumen_entidad = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT nombre_entidad, depto, num_contratos, valor_total FROM marts.resumen_entidad"]) in Source
+

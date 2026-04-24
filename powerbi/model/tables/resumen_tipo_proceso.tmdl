@@ -1,0 +1,22 @@
+table resumen_tipo_proceso
+	lineageTag: 58234b91-621a-4a21-a0fc-e6947fe0d6bd
+
+	column proceso
+		dataType: string
+		lineageTag: 243fe4aa-de9f-4d7b-a8e2-6ce200663c0a
+		sourceColumn: proceso
+
+	column num_contratos
+		dataType: int64
+		lineageTag: 7a7298fa-61e1-45c8-b7dd-0e6be9001bdb
+		sourceColumn: num_contratos
+
+	column valor_total
+		dataType: decimal
+		lineageTag: 2c7ba2c4-0523-4ad3-872c-9ce4331e7fa6
+		sourceColumn: valor_total
+
+	partition resumen_tipo_proceso = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT proceso, num_contratos, valor_total FROM marts.resumen_tipo_proceso"]) in Source
+

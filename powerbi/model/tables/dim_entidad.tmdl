@@ -1,0 +1,17 @@
+table dim_entidad
+	lineageTag: bc894b2a-e4b2-42e2-a2ea-1ae83d1d42d1
+
+	column nombre_entidad
+		dataType: string
+		lineageTag: 8c410397-6a7b-46e2-8e0f-2f225d7ccc3f
+		sourceColumn: nombre_entidad
+
+	column departamento
+		dataType: string
+		lineageTag: 97ed5527-99e0-4add-959b-0157ef8234e2
+		sourceColumn: departamento
+
+	partition dim_entidad = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT DISTINCT nombre_entidad AS nombre_entidad, departamento AS departamento FROM marts.contratacion ORDER BY nombre_entidad"]) in Source
+

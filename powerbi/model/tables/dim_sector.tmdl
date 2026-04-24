@@ -1,0 +1,12 @@
+table dim_sector
+	lineageTag: bf82db00-5484-4163-bfb3-4fd4be90fab2
+
+	column sector
+		dataType: string
+		lineageTag: eb93888b-e850-4023-a264-fbe575fe10da
+		sourceColumn: sector
+
+	partition dim_sector = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT DISTINCT sector AS sector FROM marts.contratacion ORDER BY sector"]) in Source
+

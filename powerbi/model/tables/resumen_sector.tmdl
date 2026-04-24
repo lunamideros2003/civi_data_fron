@@ -1,0 +1,22 @@
+table resumen_sector
+	lineageTag: 48dd7d5b-0f02-4b33-8ea1-44a47dbd1436
+
+	column sector
+		dataType: string
+		lineageTag: ae09ee65-6d34-496a-a372-a959991f7988
+		sourceColumn: sector
+
+	column num_contratos
+		dataType: int64
+		lineageTag: 7bd8de43-4065-4779-a7a5-0a7dd5f2003a
+		sourceColumn: num_contratos
+
+	column valor_total
+		dataType: decimal
+		lineageTag: 41a29205-615d-4750-aabe-6301d5b941b5
+		sourceColumn: valor_total
+
+	partition resumen_sector = m
+		mode: import
+		source = let Source = PostgreSQL.Database("localhost", "cividata", [Query="SELECT sector, num_contratos, valor_total FROM marts.resumen_sector"]) in Source
+
