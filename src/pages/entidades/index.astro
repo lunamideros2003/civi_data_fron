@@ -1,0 +1,21 @@
+---
+import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
+import IndicatorAccordion from '../../components/IndicatorAccordion.tsx';
+
+const indicators = [
+	{
+		title: 'Top Entidades Contratantes',
+		description: 'Ranking de las instituciones públicas que más recursos ejecutan a través de contratos.',
+		href: '/entidades/top-contratantes'
+	}
+];
+---
+
+<CategoriaLayout 
+	title="Entidades Públicas" 
+	category="Entidades"
+>
+	<div class="max-w-4xl">
+		<IndicatorAccordion client:load items={indicators} />
+	</div>
+</CategoriaLayout>

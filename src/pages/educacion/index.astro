@@ -1,0 +1,44 @@
+---
+import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
+import IndicatorAccordion from '../../components/IndicatorAccordion.tsx';
+
+const indicators = [
+	{
+		title: 'Tasa de Deserción Escolar',
+		description: 'Análisis de permanencia escolar en instituciones públicas y privadas por municipio.',
+		href: '/educacion/desercion'
+	},
+	{
+		title: 'Calidad Educativa (Saber 11)',
+		description: 'Resultados históricos de las pruebas de estado segmentados por sector y región.',
+		href: '/educacion/calidad'
+	}
+];
+---
+
+<CategoriaLayout 
+	title="Educación" 
+	category="Educación"
+	heroImage="https://images.unsplash.com/photo-1523050335102-c8845180f3bd?auto=format&fit=crop&q=80&w=2070"
+>
+	<div class="max-w-4xl">
+		<div class="mb-12">
+			<h2 class="text-3xl font-heading font-bold mb-4">Catálogo de Educación</h2>
+			<p class="text-slate-400 text-lg">
+				Seguimiento a los indicadores de calidad y acceso a la educación en el territorio nacional.
+			</p>
+		</div>
+		
+		<IndicatorAccordion client:load items={indicators} />
+		
+		<div class="mt-16 p-8 rounded-3xl glass border border-amber-500/20 bg-amber-500/5 flex items-center gap-6">
+			<div class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-500 shrink-0">
+				⚠️
+			</div>
+			<div>
+				<h3 class="text-xl font-bold mb-1">Datos en proceso de carga</h3>
+				<p class="text-slate-400">Actualmente estamos procesando los microdatos del SNIES y ICFES para habilitar estos tableros.</p>
+			</div>
+		</div>
+	</div>
+</CategoriaLayout>

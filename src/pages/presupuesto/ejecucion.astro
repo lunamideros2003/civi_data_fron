@@ -1,0 +1,25 @@
+---
+import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
+import IframePBI from '../../components/IframePBI.astro';
+
+const pbiUrl = "https://app.powerbi.com/view?r=eyJrIjoiYjYxNjU1MWItZDIzMy00ZDRiLWE4MzMtZjA4N2JiNjI4NDY1IiwidCI6IjY3OTY5NzhhLTFmNDItNDg1Yy1hYjBkLWZkMDVjYmI4Y2M1NCIsImMiOjR9";
+---
+
+<CategoriaLayout 
+	title="Ejecución Presupuestal" 
+	category="Presupuesto"
+>
+	<div class="space-y-8">
+		<IframePBI 
+			src={pbiUrl} 
+			title="Ejecución Presupuestal" 
+		/>
+		
+		<div class="p-8 rounded-3xl glass bg-brand-primary/5">
+			<h3 class="text-2xl font-bold mb-4">Nota Metodológica</h3>
+			<p class="text-slate-400 leading-relaxed">
+				La ejecución presupuestal se calcula comparando el presupuesto asignado frente al valor de los contratos adjudicados y liquidados. Se excluyen los procesos en etapa de borrador o cancelados.
+			</p>
+		</div>
+	</div>
+</CategoriaLayout>

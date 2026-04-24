@@ -1,0 +1,21 @@
+---
+import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
+import IndicatorAccordion from '../../components/IndicatorAccordion.tsx';
+
+const indicators = [
+	{
+		title: 'Ejecución Presupuestal',
+		description: 'Seguimiento al presupuesto asignado vs ejecutado.',
+		href: '/presupuesto/ejecucion'
+	}
+];
+---
+
+<CategoriaLayout 
+	title="Presupuesto Público" 
+	category="Presupuesto"
+>
+	<div class="max-w-4xl">
+		<IndicatorAccordion client:load items={indicators} />
+	</div>
+</CategoriaLayout>

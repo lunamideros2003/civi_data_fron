@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+import KpiCard from '../components/KpiCard.tsx';
+import CategoryCard from '../components/CategoryCard.astro';
+import { 
+	LucideFileText, 
+	LucideGraduationCap, 
+	LucideHeartPulse, 
+	LucideSearch, 
+	LucideGlobe,
+	LucideTrendingUp,
+	LucideUsers,
+	LucideBox
+} from 'lucide-react';
+
+const categories = [
+	{
+		title: 'Contratación Pública',
+		description: 'Seguimiento en tiempo real de los procesos de SECOP I, II e Integrado.',
+		href: '/contratos',
+		icon: LucideFileText,
+		color: '#6366f1'
+	},
+	{
+		title: 'Educación',
+		description: 'Análisis de cobertura, deserción y calidad educativa por instituciones.',
+		href: '/educacion',
+		icon: LucideGraduationCap,
+		color: '#ec4899'
+	},
+	{
+		title: 'Salud',
+		description: 'Métricas de prestación de servicios, cobertura y gasto público en salud.',
+		href: '/salud',
+		icon: LucideHeartPulse,
+		color: '#10b981'
+	},
+	{
+		title: 'Catálogo de Datos',
+		description: 'Explorador de datasets abiertos por entidad y sector económico.',
+		href: '/catalogo',
+		icon: LucideBox,
+		color: '#f59e0b'
+	}
+];
+import BuscadorIndicadores from '../components/BuscadorIndicadores.tsx';
+---
+
+<Base>
+	<main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+		<!-- Hero -->
+		<header class="text-center mb-20 relative">
+			<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-primary/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
+			
+			<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 text-brand-primary text-sm font-bold mb-8">
+				<span class="flex h-2 w-2 rounded-full bg-brand-primary animate-ping"></span>
+				OBSERVATORIO NACIONAL DE DATOS
+			</div>
+			
+			<h1 class="text-6xl md:text-8xl font-heading font-black mb-6 tracking-tighter leading-none">
+				Civi<span class="text-gradient">Data</span>
+			</h1>
+			<p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+				Transformamos datos públicos en conocimiento ciudadano. Inteligencia de datos para una Colombia más transparente.
+			</p>
+			
+			<div class="mt-12 max-w-xl mx-auto">
+				<BuscadorIndicadores client:load />
+			</div>
+		</header>
+
+		<!-- KPIs -->
+		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+			<KpiCard 
+				client:load
+				title="Contratos Analizados" 
+				value={48311} 
+				icon={LucideFileText}
+				trend={{ value: 12, isPositive: true }}
+			/>
+			<KpiCard 
+				client:load
+				title="Departamentos" 
+				value={34} 
+				icon={LucideGlobe}
+			/>
+			<KpiCard 
+				client:load
+				title="Entidades Activas" 
+				value={1240} 
+				icon={LucideUsers}
+				trend={{ value: 5, isPositive: true }}
+			/>
+			<KpiCard 
+				client:load
+				title="Valor Total (COP)" 
+				value={4500000000} 
+				prefix="$"
+				icon={LucideTrendingUp}
+				trend={{ value: 8, isPositive: true }}
+			/>
+		</section>
+
+		<!-- Categories Grid -->
+		<section>
+			<div class="flex items-end justify-between mb-12">
+				<div>
+					<h2 class="text-4xl font-heading font-bold mb-4">Ejes Temáticos</h2>
+					<p class="text-slate-400">Selecciona un área para profundizar en los datos y visualizaciones.</p>
+				</div>
+				<a href="/dashboard" class="hidden md:flex items-center gap-2 text-brand-primary font-bold hover:gap-4 transition-all">
+					Ver panel general →
+				</a>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				{categories.map(cat => (
+					<CategoryCard {...cat} />
+				))}
+			</div>
+		</section>
+		
+		<footer class="mt-32 pt-12 border-t border-white/5 text-center text-slate-500 text-sm">
+			<p>© 2026 CiviData. Proyecto de análisis de herramientas de datos públicos.</p>
+		</footer>
+	</main>
+</Base>

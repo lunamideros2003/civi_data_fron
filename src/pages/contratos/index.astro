@@ -1,0 +1,54 @@
+---
+import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
+import IndicatorAccordion from '../../components/IndicatorAccordion.tsx';
+
+const indicators = [
+	{
+		title: 'Distribución por Modalidad',
+		description: 'Analiza cómo se distribuyen los contratos según el tipo de proceso (licitación pública, contratación directa, etc.). Este indicador permite identificar patrones de transparencia.',
+		href: '/contratos/por-modalidad'
+	},
+	{
+		title: 'Concentración por Valor',
+		description: 'Visualización del volumen económico de la contratación. Permite segmentar los contratos por rangos de cuantía y ver el impacto financiero total.',
+		href: '/contratos/por-valor'
+	},
+	{
+		title: 'Top Entidades Contratantes',
+		description: 'Ranking de las instituciones públicas que más recursos ejecutan a través de contratos. Incluye comparativas por sector.',
+		href: '/entidades/top-contratantes'
+	}
+];
+---
+
+<CategoriaLayout 
+	title="Contratación Pública" 
+	category="Contratos"
+	heroImage="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=2070"
+>
+	<div class="max-w-4xl">
+		<div class="mb-12">
+			<h2 class="text-3xl font-heading font-bold mb-4">Catálogo de Indicadores</h2>
+			<p class="text-slate-400 text-lg">
+				Explora los diferentes ejes de análisis disponibles para la contratación pública en Colombia, basados en los datos de SECOP II.
+			</p>
+		</div>
+		
+		<IndicatorAccordion client:load items={indicators} />
+		
+		<div class="mt-16 p-8 rounded-3xl glass border border-brand-primary/20 bg-brand-primary/5">
+			<h3 class="text-xl font-bold mb-4">¿Cómo se obtienen estos datos?</h3>
+			<p class="text-slate-400 leading-relaxed mb-6">
+				Los datos son extraídos diariamente de la API de Datos Abiertos de Colombia (Socrata) y procesados en nuestro almacén de datos PostgreSQL para garantizar rapidez y precisión en las visualizaciones.
+			</p>
+			<div class="flex gap-4">
+				<div class="px-4 py-2 rounded-lg bg-white/5 text-xs font-mono text-slate-300">
+					Ultima sincronización: Hace 2 horas
+				</div>
+				<div class="px-4 py-2 rounded-lg bg-white/5 text-xs font-mono text-slate-300">
+					Dataset: SECOP_II_CONTRATOS
+				</div>
+			</div>
+		</div>
+	</div>
+</CategoriaLayout>

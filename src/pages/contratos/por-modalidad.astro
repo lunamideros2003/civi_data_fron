@@ -1,0 +1,87 @@
+---
+import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
+import IframePBI from '../../components/IframePBI.astro';
+import { LucideInfo, LucideCalendar } from 'lucide-react';
+
+// URL de ejemplo de un reporte de Power BI (Publish to Web)
+const pbiUrl = "https://app.powerbi.com/view?r=eyJrIjoiYjYxNjU1MWItZDIzMy00ZDRiLWE4MzMtZjA4N2JiNjI4NDY1IiwidCI6IjY3OTY5NzhhLTFmNDItNDg1Yy1hYjBkLWZkMDVjYmI4Y2M1NCIsImMiOjR9";
+---
+
+<CategoriaLayout 
+	title="Distribución por Modalidad" 
+	category="Contratos"
+>
+	<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+		<!-- Main Visualization -->
+		<div class="lg:col-span-3">
+			<div class="mb-8 flex items-center justify-between">
+				<div class="flex items-center gap-4">
+					<div class="px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-wider">
+						Dashboard Interactivo
+					</div>
+					<div class="flex items-center gap-2 text-slate-400 text-sm">
+						<LucideCalendar size={14} />
+						Vigencia 2024 - 2025
+					</div>
+				</div>
+			</div>
+			
+			<IframePBI 
+				src={pbiUrl} 
+				title="Reporte de Modalidades SECOP" 
+			/>
+			
+			<div class="mt-8 prose prose-invert max-w-none">
+				<h3 class="text-2xl font-heading font-bold mb-4">Análisis Contextual</h3>
+				<p class="text-slate-300 leading-relaxed mb-4">
+					Este reporte segmenta los procesos de contratación según las modalidades legales definidas en Colombia. La <strong>Licitación Pública</strong> representa el estándar de transparencia, mientras que la <strong>Contratación Directa</strong> es monitoreada para prevenir posibles riesgos de opacidad.
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+					<div class="p-6 rounded-2xl glass border border-emerald-500/20">
+						<h4 class="text-emerald-400 font-bold mb-2">Puntos Destacados</h4>
+						<ul class="text-sm text-slate-400 space-y-2">
+							<li>• Incremento del 15% en procesos competitivos.</li>
+							<li>• Mayor volumen concentrado en servicios profesionales.</li>
+							<li>• Reducción de tiempos promedio de adjudicación.</li>
+						</ul>
+					</div>
+					<div class="p-6 rounded-2xl glass border border-amber-500/20">
+						<h4 class="text-amber-400 font-bold mb-2">Alertas Tempranas</h4>
+						<ul class="text-sm text-slate-400 space-y-2">
+							<li>• 5 entidades concentran el 40% de la contratación directa.</li>
+							<li>• Falta de información en el 2% de los metadatos.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Sidebar / Context -->
+		<div class="space-y-6">
+			<div class="p-6 rounded-2xl glass border border-white/5">
+				<div class="flex items-center gap-2 mb-4 text-brand-primary">
+					<LucideInfo size={20} />
+					<h3 class="font-bold">Glosario de Términos</h3>
+				</div>
+				<div class="space-y-4">
+					<div>
+						<p class="text-xs font-bold text-slate-300 uppercase mb-1">Mínima Cuantía</p>
+						<p class="text-xs text-slate-500">Proceso simplificado para adquisiciones de bajo monto.</p>
+					</div>
+					<div>
+						<p class="text-xs font-bold text-slate-300 uppercase mb-1">Subasta Inversa</p>
+						<p class="text-xs text-slate-500">Competencia de precios a la baja para bienes estandarizados.</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="p-6 rounded-2xl glass border border-white/5 bg-gradient-to-br from-brand-secondary/5 to-transparent">
+				<h3 class="font-bold mb-3">Descargar Datos</h3>
+				<p class="text-xs text-slate-500 mb-4">Exporta el dataset procesado que alimenta esta visualización.</p>
+				<button class="w-full py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm font-bold transition-colors">
+					CSV (Marts Table)
+				</button>
+			</div>
+		</div>
+	</div>
+</CategoriaLayout>
