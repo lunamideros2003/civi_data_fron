@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import RagAssistant from '../components/RagAssistant';
 
 interface Props {
 	title?: string;
@@ -34,6 +35,7 @@ const {
 	</head>
 	<body>
 		<slot />
+		<RagAssistant client:load />
 		
 		<style is:global>
 			:root {
