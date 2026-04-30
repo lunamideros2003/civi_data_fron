@@ -4,19 +4,34 @@ import IndicatorAccordion from '../../components/IndicatorAccordion.tsx';
 
 const indicators = [
 	{
-		title: 'Distribución por Modalidad',
-		description: 'Analiza cómo se distribuyen los contratos según el tipo de proceso (licitación pública, contratación directa, etc.). Este indicador permite identificar patrones de transparencia.',
+		title: 'Vista General',
+		description: 'Panorama general de la contratación pública.',
+		href: '/contratos/vista-general'
+	},
+	{
+		title: 'Distribución por Valor',
+		description: 'Análisis de la distribución de los contratos según su valor económico.',
+		href: '/contratos/distribucion-por-valor'
+	},
+	{
+		title: 'Por Tipo de Contrato',
+		description: 'Clasificación de los procesos según el tipo de contrato.',
+		href: '/contratos/por-tipo-de-contrato'
+	},
+	{
+		title: 'Por Modalidad',
+		description: 'Analiza cómo se distribuyen los contratos según el tipo de proceso (licitación, contratación directa, etc.).',
 		href: '/contratos/por-modalidad'
 	},
 	{
-		title: 'Concentración por Valor',
-		description: 'Visualización del volumen económico de la contratación. Permite segmentar los contratos por rangos de cuantía y ver el impacto financiero total.',
-		href: '/contratos/por-valor'
+		title: 'Por Departamento',
+		description: 'Distribución geográfica de la contratación a nivel departamental.',
+		href: '/contratos/por-departamento'
 	},
 	{
-		title: 'Top Entidades Contratantes',
-		description: 'Ranking de las instituciones públicas que más recursos ejecutan a través de contratos. Incluye comparativas por sector.',
-		href: '/entidades/top-contratantes'
+		title: 'Entidades Contratantes',
+		description: 'Análisis de las entidades públicas que ejecutan la contratación.',
+		href: '/contratos/entidades-contratantes'
 	}
 ];
 ---

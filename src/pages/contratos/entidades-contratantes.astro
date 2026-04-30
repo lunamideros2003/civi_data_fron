@@ -3,11 +3,11 @@ import CategoriaLayout from '../../layouts/CategoriaLayout.astro';
 import IframePBI from '../../components/IframePBI.astro';
 import { LucideInfo, LucideCalendar } from 'lucide-react';
 
-const pbiUrl = "https://app.powerbi.com/view?r=eyJrIjoiNGRjNGE2MGYtMGJmZS00ODhhLWJlNjUtOWEzMzMwZTdkYTM4IiwidCI6IjhkMzY4MzZlLTZiNzUtNGRlNi1iYWI5LTVmNGIxNzc1NDI3ZiIsImMiOjR9&pageName=c330720cd98544802d71";
+const pbiUrl = "https://app.powerbi.com/view?r=eyJrIjoiNGRjNGE2MGYtMGJmZS00ODhhLWJlNjUtOWEzMzMwZTdkYTM4IiwidCI6IjhkMzY4MzZlLTZiNzUtNGRlNi1iYWI5LTVmNGIxNzc1NDI3ZiIsImMiOjR9&pageName=b4a5456f0e90cbb08b61";
 ---
 
 <CategoriaLayout 
-	title="Distribución por Modalidad" 
+	title="Entidades Contratantes" 
 	category="Contratos"
 >
 	<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -27,13 +27,13 @@ const pbiUrl = "https://app.powerbi.com/view?r=eyJrIjoiNGRjNGE2MGYtMGJmZS00ODhhL
 			
 			<IframePBI 
 				src={pbiUrl} 
-				title="Reporte de Modalidades SECOP" 
+				title="Reporte Entidades Contratantes" 
 			/>
 			
 			<div class="mt-8 prose prose-invert max-w-none">
 				<h3 class="text-2xl font-heading font-bold mb-4">Análisis Contextual</h3>
 				<p class="text-slate-300 leading-relaxed mb-4">
-					Este reporte segmenta los procesos de contratación según las modalidades legales definidas en Colombia. La <strong>Licitación Pública</strong> representa el estándar de transparencia, mientras que la <strong>Contratación Directa</strong> es monitoreada para prevenir posibles riesgos de opacidad.
+					Análisis de las entidades públicas que ejecutan la contratación. Este dashboard identifica a los mayores ejecutores de presupuesto público y sus patrones de compra.
 				</p>
 			</div>
 		</div>
@@ -43,16 +43,12 @@ const pbiUrl = "https://app.powerbi.com/view?r=eyJrIjoiNGRjNGE2MGYtMGJmZS00ODhhL
 			<div class="p-6 rounded-2xl glass border border-white/5">
 				<div class="flex items-center gap-2 mb-4 text-brand-primary">
 					<LucideInfo size={20} />
-					<h3 class="font-bold">Glosario de Términos</h3>
+					<h3 class="font-bold">Información</h3>
 				</div>
 				<div class="space-y-4">
 					<div>
-						<p class="text-xs font-bold text-slate-300 uppercase mb-1">Mínima Cuantía</p>
-						<p class="text-xs text-slate-500">Proceso simplificado para adquisiciones de bajo monto.</p>
-					</div>
-					<div>
-						<p class="text-xs font-bold text-slate-300 uppercase mb-1">Subasta Inversa</p>
-						<p class="text-xs text-slate-500">Competencia de precios a la baja para bienes estandarizados.</p>
+						<p class="text-xs font-bold text-slate-300 uppercase mb-1">Top Entidades</p>
+						<p class="text-xs text-slate-500">Ranking de las entidades que más recursos destinan en procesos de contratación.</p>
 					</div>
 				</div>
 			</div>
