@@ -22,34 +22,30 @@ const categories = [
 		color: '#6366f1'
 	}
 ];
-import BuscadorIndicadores from '../components/BuscadorIndicadores.tsx';
+import RagAssistant from '../components/RagAssistant.tsx';
 ---
 
 <Base>
-	<main class="max-w-7xl mx-auto px-6 py-12 md:py-24">
+	<main class="max-w-7xl mx-auto px-6 py-8">
 		<!-- Hero -->
-		<header class="text-center mb-20 relative">
-			<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-primary/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
+		<header class="text-center mb-10 relative flex flex-col items-center">
+			<div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-primary/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
 			
-			<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 text-brand-primary text-sm font-bold mb-8">
+			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/10 text-brand-primary text-xs font-bold mb-6">
 				<span class="flex h-2 w-2 rounded-full bg-brand-primary animate-ping"></span>
 				OBSERVATORIO NACIONAL DE DATOS
 			</div>
 			
-			<h1 class="text-6xl md:text-8xl font-heading font-black mb-6 tracking-tighter leading-none">
+			<h1 class="text-5xl md:text-6xl font-heading font-black mb-4 tracking-tighter leading-none">
 				Civi<span class="text-gradient">Data</span>
 			</h1>
-			<p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+			<p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
 				Transformamos datos públicos en conocimiento ciudadano. Inteligencia de datos para una Colombia más transparente.
 			</p>
-			
-			<div class="mt-12 max-w-xl mx-auto">
-				<BuscadorIndicadores client:load />
-			</div>
 		</header>
 
 		<!-- KPIs -->
-		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+		<section class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
 			<KpiCard 
 				client:load
 				title="Contratos Analizados" 
@@ -80,26 +76,29 @@ import BuscadorIndicadores from '../components/BuscadorIndicadores.tsx';
 			/>
 		</section>
 
-		<!-- Categories Grid -->
-		<section>
-			<div class="flex items-end justify-between mb-12">
-				<div>
-					<h2 class="text-4xl font-heading font-bold mb-4">Ejes Temáticos</h2>
+		<!-- Main Content: Category & Chat -->
+		<section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+			<!-- Left Column: Categories -->
+			<div class="flex flex-col h-full">
+				<div class="mb-6">
+					<h2 class="text-3xl font-heading font-bold mb-2">Ejes Temáticos</h2>
 					<p class="text-slate-400">Selecciona un área para profundizar en los datos y visualizaciones.</p>
 				</div>
-				<a href="/dashboard" class="hidden md:flex items-center gap-2 text-brand-primary font-bold hover:gap-4 transition-all">
-					Ver panel general →
-				</a>
+				
+				<div class="grid grid-cols-1 gap-6">
+					{categories.map(cat => (
+						<CategoryCard {...cat} />
+					))}
+				</div>
 			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-				{categories.map(cat => (
-					<CategoryCard {...cat} />
-				))}
+
+			<!-- Right Column: Chatbot -->
+			<div class="h-full flex flex-col">
+				<RagAssistant client:load />
 			</div>
 		</section>
 		
-		<footer class="mt-32 pt-12 border-t border-white/5 text-center text-slate-500 text-sm">
+		<footer class="mt-12 pt-8 border-t border-white/5 text-center text-slate-500 text-xs">
 			<p>© 2026 CiviData. Proyecto de análisis de herramientas de datos públicos.</p>
 		</footer>
 	</main>
