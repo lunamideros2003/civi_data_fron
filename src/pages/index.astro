@@ -10,7 +10,8 @@ import {
 	LucideGlobe,
 	LucideTrendingUp,
 	LucideUsers,
-	LucideBox
+	LucideBox,
+	LucideSigma
 } from 'lucide-react';
 
 const categories = [
@@ -20,6 +21,13 @@ const categories = [
 		href: '/contratos',
 		icon: LucideFileText,
 		color: '#6366f1'
+	},
+	{
+		title: 'Análisis ANOVA',
+		description: 'Análisis estadístico de varianza para identificar diferencias significativas en contratos públicos.',
+		href: '/contratos/analisis-anova',
+		icon: LucideSigma,
+		color: '#ec4899'
 	}
 ];
 import RagAssistant from '../components/RagAssistant.tsx';
